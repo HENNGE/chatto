@@ -1,0 +1,52 @@
+<template>
+  <aside class="Sidebar">
+    <h5 class="Sidebar__header">Channels</h5>
+    <nav class="Channels">
+      <ul>
+        <li>Test</li>
+      </ul>
+    </nav>
+  </aside>
+</template>
+
+<script>
+export default {
+  name: 'Sidebar',
+  data() {
+    return {
+      res: {},
+    };
+  },
+  created() {
+    fetch('https://simple-golang-chat-demo.herokuapp.com', {
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
+    })
+      .then(res => res.json())
+      .then((json) => {
+        this.res = json;
+      })
+      .catch(err => err);
+  },
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+
+a {
+  color: #42b983;
+}
+
+.Sidebar {
+  width: 200px;
+  height: 100%;
+  background-color: #f1f1f1;
+}
+
+.Sidebar__header {
+  margin: 0;
+  padding: 10px 15px;
+}
+</style>
