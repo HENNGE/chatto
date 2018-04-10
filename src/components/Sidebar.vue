@@ -30,16 +30,7 @@ export default {
   computed: mapState({
     username: state => state.user.username,
   }),
-  created() {
-    this.$options.sockets.onmessage = (message) => {
-      this.setUsername(message);
-    };
-  },
   methods: {
-    setUsername(message) {
-      const json = JSON.parse(message.data);
-      console.log(json);
-    },
     onSubmit(event) {
       const username = event.target.username.value;
 
