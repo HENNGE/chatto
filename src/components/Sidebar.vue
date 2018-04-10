@@ -1,6 +1,13 @@
 <template>
   <aside class="Sidebar">
     <h5 class="Sidebar__header">Channels</h5>
+    <form @submit.prevent="onSubmit">
+      <label>
+        Name:
+        <input name="username" value="" placeholder="" />
+        <input type="submit" value="Save" />
+      </label>
+    </form>
     <nav class="Channels">
       <ul>
         <li>Test</li>
@@ -17,6 +24,27 @@ export default {
       res: {},
     };
   },
+  created() {
+    this.$options.sockets.onmessage = message => {
+      this.setUsername(message);
+    };
+  },
+  methods: {
+    setUsername(message) {
+      const json = JSON.parse(message.data);
+      console.log(json);
+    },
+    onSubmit(event) {
+      const username = event.target.username.value;
+
+      this.$socket.sendObj({
+        command: 'NICK',
+        params: username
+      });
+
+      this.$store.commit("setUsername", username);
+    }
+  }
 };
 </script>
 

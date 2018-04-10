@@ -3,7 +3,7 @@ import VueNativeSock from 'vue-native-websocket';
 
 import App from './App';
 import router from './router';
-import store from './store';
+import store from './store/index';
 
 Vue.use(
   VueNativeSock,
@@ -19,6 +19,7 @@ Vue.config.productionTip = false;
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router,
   components: { App },
   template: '<App/>',
