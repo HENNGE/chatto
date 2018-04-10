@@ -17,18 +17,6 @@ export default {
       res: {},
     };
   },
-  created() {
-    fetch('https://simple-golang-chat-demo.herokuapp.com', {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-    })
-      .then(res => res.json())
-      .then((json) => {
-        this.res = json;
-      })
-      .catch(err => err);
-  },
 };
 </script>
 
