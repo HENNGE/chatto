@@ -3,8 +3,16 @@ import VueNativeSock from 'vue-native-websocket';
 
 import App from './App';
 import router from './router';
+import store from './store';
 
-Vue.use(VueNativeSock, 'wss://simple-golang-chat-demo.herokuapp.com/ws');
+Vue.use(
+  VueNativeSock,
+  'wss://simple-golang-chat-demo.herokuapp.com/ws',
+  {
+    store,
+    format: 'json',
+  },
+);
 
 Vue.config.productionTip = false;
 
