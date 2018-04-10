@@ -1,8 +1,10 @@
 <template>
   <aside class="Sidebar">
     <h5 class="Sidebar__header">Channels</h5>
-    <h5 v-if="username">
-      Welcome, {{ username }}!
+    <h5>
+      Welcome
+      <span v-if="username">{{ username }}!</span>
+      <span v-else>...wait, who are you?</span>
     </h5>
     <form @submit.prevent="onSubmit">
       <label>
