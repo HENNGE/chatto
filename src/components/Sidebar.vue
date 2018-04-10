@@ -25,7 +25,7 @@ export default {
     };
   },
   created() {
-    this.$options.sockets.onmessage = message => {
+    this.$options.sockets.onmessage = (message) => {
       this.setUsername(message);
     };
   },
@@ -39,12 +39,12 @@ export default {
 
       this.$socket.sendObj({
         command: 'NICK',
-        params: username
+        params: username,
       });
 
-      this.$store.commit("setUsername", username);
-    }
-  }
+      this.$store.commit('setUsername', username);
+    },
+  },
 };
 </script>
 
