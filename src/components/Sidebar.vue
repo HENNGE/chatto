@@ -1,6 +1,9 @@
 <template>
   <aside class="Sidebar">
     <h5 class="Sidebar__header">Channels</h5>
+    <h5 v-if="username">
+      Welcome, {{ username }}!
+    </h5>
     <form @submit.prevent="onSubmit">
       <label>
         Name:
@@ -8,15 +11,13 @@
         <input type="submit" value="Save" />
       </label>
     </form>
-    <nav class="Channels">
-      <ul>
-        <li>Test</li>
-      </ul>
-    </nav>
+    <nav class="Channels" />
   </aside>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'Sidebar',
   data() {
@@ -24,6 +25,9 @@ export default {
       res: {},
     };
   },
+  computed: mapState({
+    username: state => state.user.username,
+  }),
   created() {
     this.$options.sockets.onmessage = (message) => {
       this.setUsername(message);
