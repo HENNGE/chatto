@@ -22,11 +22,6 @@ import { mapState } from 'vuex';
 
 export default {
   name: 'Sidebar',
-  data() {
-    return {
-      res: {},
-    };
-  },
   computed: mapState({
     username: state => state.user.username,
   }),
