@@ -11,8 +11,13 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: 'Sidebar',
+  computed: mapState({
+    username: state => state.user.username
+  })
 };
 </script>
 
