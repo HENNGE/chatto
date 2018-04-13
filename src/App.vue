@@ -1,7 +1,8 @@
 <template>
   <div id="App">
-    <router-view name="Sidebar" />
     <router-view name="Header" />
+    <router-view name="Sidebar" />
+    <router-view name="Channels" />
   </div>
 </template>
 
